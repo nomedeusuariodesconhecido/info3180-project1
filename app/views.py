@@ -52,6 +52,20 @@ def add_header(response):
 def page_not_found(error):
     """Custom 404 page."""
     return render_template('404.html'), 404
+  
+  
+
+@app.route('/profile/')
+def add_profile():
+  return "Add a profile"
+
+@app.route('/profiles/')
+def list_all_profiles():
+  return "List All Profiles"
+
+@app.route('/profile/<int:id>')
+def display_profile():
+  return "List All Profiles"
 
 
 if __name__ == '__main__':
