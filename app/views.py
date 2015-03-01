@@ -8,6 +8,20 @@ This file creates your application.
 
 from app import app
 from flask import render_template, request, redirect, url_for
+from flask.ext.wtf import Form
+from wtforms import StringField, BooleanField
+from wtforms.validators import DataRequired, Required, Email
+from wtforms.fields import TextField
+
+app.config['SECRET_KEY'] = "alfred masterson"
+
+class CreateProfileForm(Form):
+    first_name = TextField('First Name', validators=[Required()])
+    last_name = TextField('Last Name', validators=[Required()])
+    image = TextField('Image', validators=[Required(), Email()])
+
+
+
 
 
 ###
@@ -55,9 +69,14 @@ def page_not_found(error):
   
   
 
-@app.route('/profile/')
+@app.route('/profile/', methods=['POST', 'GET'])
 def add_profile():
-  return "Add a profile"
+  form = CreateProfileForm()
+  if request.method == "POST":
+    first_name = request.form['first_name']
+    last_name = request.form['last_name']
+    return "{} {} this was a post".format(first_name, last_name)
+  return render_template('add_profile.html', form=form)
 
 @app.route('/profiles/')
 def list_all_profiles():
@@ -65,7 +84,7 @@ def list_all_profiles():
 
 @app.route('/profile/<int:id>')
 def display_profile():
-  return "List All Profiles"
+  return "profile {}".format(id)
 
 
 if __name__ == '__main__':
