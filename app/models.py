@@ -1,6 +1,6 @@
 from . import db
 
-class User(db.Model):
+class Profile(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   first_name = db.Column(db.String(80), unique=True)
   last_name = db.Column(db.String(80), unique=True)
@@ -13,5 +13,5 @@ class User(db.Model):
     self.last_name = last_name
 
   def __repr__(self):
-    return '<Profile %r %r>' % (self.first_name, self.last_name
+    return '<Profile %r %r>' % (self.first_name, self.last_name)
   

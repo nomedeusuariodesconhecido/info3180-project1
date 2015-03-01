@@ -76,6 +76,9 @@ def add_profile():
   if request.method == "POST":
     first_name = request.form['first_name']
     last_name = request.form['last_name']
+    newprofile = Profile(first_name, last_name)
+    db.session.add(newprofile)
+    db.session.commit()
     return "{} {} this was a post".format(first_name, last_name)
   return render_template('add_profile.html', form=form)
 
