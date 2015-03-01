@@ -12,8 +12,9 @@ from flask.ext.wtf import Form
 from wtforms import StringField, BooleanField
 from wtforms.validators import DataRequired, Required, Email
 from wtforms.fields import TextField
+from app import db
+from app.models import Profile
 
-app.config['SECRET_KEY'] = "alfred masterson"
 
 class CreateProfileForm(Form):
     first_name = TextField('First Name', validators=[Required()])
