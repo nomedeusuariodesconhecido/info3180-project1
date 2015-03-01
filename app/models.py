@@ -1,10 +1,10 @@
-from . import db
+from app import db
 
 class Profile(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   first_name = db.Column(db.String(80), unique=True)
   last_name = db.Column(db.String(80), unique=True)
-  gender = db.Column(db.String(2), unique=True)
+  gender = db.Column(db.String(10), unique=True)
   image = db.Column(db.String(2), unique=True)
   
   
