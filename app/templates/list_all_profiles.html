@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+
+{% block js %}
+{% endblock %}
+
+
+{% block main %}
+  <div class = "container">
+      <ul>
+        {% for profile in profiles %}
+        <li>{{profiles.id}}{{profiles.first_name}}{{profiles.last_name}}</li>
+        {% endfor %}
+      </ul>
+  </div>
+  <br />
+  <br />
+
+{% endblock %}
